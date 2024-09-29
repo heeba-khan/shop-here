@@ -1,9 +1,43 @@
-import React from 'react'
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useCart } from "../CartContext"; 
 
-function Product() {
+const Product = () => {
+  const { id } = useParams();
+  const [product, setProduct] = useState(null);
+  const { addToCart } = useCart(); 
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+        const data = await response.json();
+        setProduct(data);
+      } catch (error) {
+        console.error("Error fetching product:", error);
+      }
+    };
+    fetchProduct();
+  }, [id]);
+
+  if (!product) {
+    return <p>Loading product...</p>;
+  }
+
   return (
-    <div>Product</div>
-  )
-}
+    <div className="max-w-2xl mx-auto py-8 px-4">
+      <img src={product.image} alt={product.title} className="w-full h-72 object-contain mb-4" />
+      <h1 className="text-3xl font-bold text-gray-800 mb-4">{product.title}</h1>
+      <p className="text-lg text-gray-500 mb-4">${product.price}</p>
+      <p className="text-gray-700 mb-4">{product.description}</p>
+      <button
+        onClick={() => addToCart(product)} 
+        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+      >
+        Add to Cart
+      </button>
+    </div>
+  );
+};
 
-export default Product
+export default Product;
