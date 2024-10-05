@@ -21,6 +21,15 @@ app.use(express.json());
 // Routes
 app.use('/api/auth', authRoutes);
 
+app.get('/api',(req,res)=>{
+    try{
+        res.send("API is working Heeba, Well Done!!")
+    }
+    catch(e){
+        res.status(500).send({e:"Heeba, there is something wrong!!"})
+    }
+})
+
 // Port configuration
 const PORT = process.env.PORT || 5000;
 
