@@ -34,6 +34,14 @@ app.get('/',(req,res)=>{
     }
 })
 
+app.get('/api',(req,res)=>{
+    try{
+        res.send("/api route is working fine.")
+    }catch(e){
+        res.status(500).send({e:"Could not reach /api endpoint."})
+    }
+})
+
 // Port configuration
 const PORT = process.env.PORT || 5000;
 
