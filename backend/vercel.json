@@ -3,18 +3,18 @@
     "version": 2,
     "builds": [
       {
-        "src": "shop-here/backend/api/app.js",    
+        "src": "shop-here/backend/api",    
         "use": "@vercel/node"            
       }
     ],
     "routes": [
       {
         "src": "/api/(.*)",              
-        "dest": "/shop-here/backend/api/app.js"    
+        "dest": "/shop-here/backend/api"    
       },
       {
         "src": "/(.*)",                     
-        "dest": "/shop-here/backend/api/app.js"   
+        "dest": "/shop-here/backend/api"   
       }
     ]
   }
