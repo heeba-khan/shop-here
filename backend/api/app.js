@@ -21,7 +21,11 @@ app.use(express.json());
 // Routes
 app.use('/api/auth', authRoutes);
 
-app.get('/api',(req,res)=>{
+// app.get('/', (req, res) => {
+//     res.send('Welcome to the Shopping Cart API');
+//   });
+
+app.get('/',(req,res)=>{
     try{
         res.send("API is working Heeba, Well Done!!")
     }
