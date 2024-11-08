@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import { useCart } from "../CartContext"; 
 
 const Product = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
-  const { addToCart } = useCart(); 
+  const { addToCart } = useCart();
+  const navigate=useNavigate(); 
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -31,7 +32,11 @@ const Product = () => {
       <p className="text-lg text-gray-500 mb-4">${product.price}</p>
       <p className="text-gray-700 mb-4">{product.description}</p>
       <button
-        onClick={() => addToCart(product)} 
+        onClick={() => {
+                addToCart(product);
+                navigate('/cart');
+              }
+              } 
         className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
       >
         Add to Cart

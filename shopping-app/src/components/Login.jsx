@@ -1,8 +1,8 @@
 // src/components/Login.jsx
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 
-const Login = ({ setUser }) => {
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -25,9 +25,9 @@ const Login = ({ setUser }) => {
         if (data.token) {
             console.log('Token recieved: ',data.token);
             localStorage.setItem('token', data.token);
-            setUser(data); // Set the logged-in user in the app's state
+            // setUser(data); // Set the logged-in user in the app's state
             console.log('Navigating to home');
-            navigate('/'); 
+            navigate('/');
         } else {
             setError('Invalid login credentials');
         }
@@ -42,7 +42,7 @@ const Login = ({ setUser }) => {
 
   return (
     <div>
-      <h2>Login</h2>
+      {/* <h2>Login</h2> */}
       <form onSubmit={handleSubmit}>
         <div>
           <label>Email:</label>
@@ -64,7 +64,7 @@ const Login = ({ setUser }) => {
         </div>
         {error && <p style={{ color: 'red' }}>{error}</p>}
         <button type="submit">Login</button>
-        <p>Don't have an account?<a href='/register'>Register</a></p>
+        <p>Don't have an account?<Link to="/register">Register</Link></p>
       </form>
     </div>
   );

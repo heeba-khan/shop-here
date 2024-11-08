@@ -1,8 +1,8 @@
-// src/components/Register.jsx
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Register = ({ setUser }) => {
+const Register = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -20,23 +20,25 @@ const Register = ({ setUser }) => {
       });
 
       const data = await response.json();
+      console.log(data);
+      
 
-      if (data.token) {
-        localStorage.setItem('token', data.token);
-        setUser(data); // Set the newly registered user in the app's state
-        navigate('/')
-      } else {
-        setError('Registration failed');
-      }
+      // if (data.token) {
+      //   localStorage.setItem('token', data.token);
+      //   setUser(data); // Set the newly registered user in the app's state
+      //   navigate('/')
+      // } else {
+      //   setError('Registration failed');
+      // }
     } catch (error) {
       console.error('Registration error:', error);
       setError('An error occurred during registration');
     }
   };
-
+  
   return (
     <div>
-      <h2>Register</h2>
+      {/* <h2>Register</h2> */}
       <form onSubmit={handleSubmit}>
         <div>
           <label>Username:</label>

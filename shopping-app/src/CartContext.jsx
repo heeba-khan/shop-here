@@ -1,12 +1,14 @@
 // src/CartContext.js
 import  { createContext, useContext, useState } from 'react';
+import { useLocalStorage } from '@uidotdev/usehooks';
 
 // Create Cart Context
 const CartContext = createContext();
 
 // Cart Provider Component
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
+  // const [cart, setCart] = useState([]);
+  const [cart, setCart] = useLocalStorage("cart",[]);
 
   const addToCart = (product) => {
     setCart((prevCart) => [...prevCart, product]);
