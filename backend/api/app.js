@@ -15,7 +15,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-    origin:'https://shop-here-nimz-j5lehquit-heebas-projects.vercel.app/',
+    origin:'https://shop-here-frontend.vercel.app',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
