@@ -1,4 +1,3 @@
-// src/CartContext.js
 import  { createContext, useContext, useState } from 'react';
 import { useLocalStorage } from '@uidotdev/usehooks';
 
