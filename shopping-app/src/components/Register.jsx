@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+const apiUrl = import.meta.env.VITE_BACKEND_URL;
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -8,14 +9,13 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate=useNavigate();
-  const apiUrl = import.meta.env.VITE_BACKEND_URL;
   console.log(apiUrl);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/register`, {
+      const response = await fetch(`${apiUrl}/api/auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, email, password }),
@@ -23,7 +23,7 @@ const Register = () => {
       if(response.ok){
         const data = await response.json();
         console.log("User Created:",data);
-        navigate('/login')
+        navigate('login')
       }else{
         throw new Error("Registration Failed.")
       }
