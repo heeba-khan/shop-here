@@ -1,13 +1,13 @@
 // src/components/Login.jsx
 import React, { useState } from 'react';
 import { useNavigate,Link } from 'react-router-dom';
-const apiUrl = import.meta.env.VITE_BACKEND_URL;
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate(); 
+  const apiUrl = import.meta.env.VITE_BACKEND_URL;
   console.log(apiUrl);
 
   const handleSubmit = async (e) => {

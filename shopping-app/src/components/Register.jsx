@@ -1,7 +1,6 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-const apiUrl = import.meta.env.VITE_BACKEND_URL;
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -9,6 +8,7 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate=useNavigate();
+  const apiUrl = import.meta.env.VITE_BACKEND_URL;
   console.log(apiUrl);
 
   const handleSubmit = async (e) => {
