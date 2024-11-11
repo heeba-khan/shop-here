@@ -20,9 +20,13 @@ const Register = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, email, password }),
       });
-
-      const data = await response.json();
-      console.log(data);
+      if(response.ok){
+        const data = await response.json();
+        console.log("User Created:",data);
+        navigate('/')
+      }else{
+        throw new Error("Registration Failed.")
+      }
       
 
       // if (data.token) {
