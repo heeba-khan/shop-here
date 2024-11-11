@@ -14,7 +14,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/login`, {
+      const response = await fetch('https://shop-here-backend.vercel.app/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),

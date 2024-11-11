@@ -15,7 +15,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/register`, {
+      const response = await fetch('https://shop-here-backend.vercel.app/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, email, password }),
