@@ -26,7 +26,7 @@ const Product = () => {
   }
 
   return (
-    <div className="max-w-2xl mx-auto py-8 px-4 flex flex-col h-full justify-between">
+    <div className="max-w-2xl mx-auto py-8 px-4">
       <img src={product.image} alt={product.title} className="w-full h-72 object-contain mb-4" />
       <h1 className="text-3xl font-bold text-gray-800 mb-4">{product.title}</h1>
       <p className="text-lg text-gray-500 mb-4">${product.price}</p>
@@ -37,7 +37,7 @@ const Product = () => {
                 navigate('/cart');
               }
               } 
-        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-auto"
+        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
       >
         Add to Cart
       </button>
