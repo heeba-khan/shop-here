@@ -9,7 +9,7 @@ const Register = () => {
   const [error, setError] = useState('');
   const navigate=useNavigate();
   const apiUrl = import.meta.env.VITE_BACKEND_URL;
-  console.log(apiUrl);
+  // console.log(apiUrl);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

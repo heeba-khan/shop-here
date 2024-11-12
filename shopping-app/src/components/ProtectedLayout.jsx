@@ -6,7 +6,7 @@ import Logout from './Logout'
 function ProtectedLayout() {
   return (
     <Protected>
-        <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '10px' }}>
+        <div className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
         <Logout />
       </div>
         <Outlet/>
