@@ -31,7 +31,7 @@ const Home = () => {
             products.map((product) => (
               <div
                 key={product.id}
-                className="bg-white rounded-lg shadow-md p-4 transition duration-300 transform hover:scale-105"
+                className="bg-white rounded-lg shadow-md p-4 transition duration-300 transform hover:scale-105 flex flex-col justify-between h-full"
               >
                 <Link to={`/product/${product.id}`}>
                   <img
@@ -49,7 +49,7 @@ const Home = () => {
                     addToCart(product);
                     navigate("/cart");
                   }}
-                  className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-full"
+                  className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-auto w-full"
                 >
                   Add to Cart
                 </button>
