@@ -5,7 +5,10 @@ import Protected from './Protected'
 function ProtectedLayout() {
   return (
     <Protected>
-        <Outlet />
+        <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '10px' }}>
+        <LogoutButton />
+      </div>
+        <Outlet/>
     </Protected>
   )
 }
