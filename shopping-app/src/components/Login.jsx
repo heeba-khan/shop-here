@@ -35,7 +35,7 @@ const Login = () => {
             localStorage.setItem('token', data.token);
             // setUser(data); // Set the logged-in user in the app's state
             console.log('Navigating to home');
-            // navigate('/');
+            navigate('/');
         } else {
             setError('Invalid login credentials');
         }

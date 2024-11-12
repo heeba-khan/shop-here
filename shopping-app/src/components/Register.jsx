@@ -28,7 +28,7 @@ const Register = () => {
       if(response.ok){
         const data = await response.json();
         console.log("User Created:",data);
-        // navigate('login')
+        navigate('/login')
       }else{
         throw new Error("Registration Failed.")
       }
