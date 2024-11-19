@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const Cart=require('../models/Cart')
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
@@ -24,7 +25,7 @@ exports.registerUser = async (req, res) => {
     const hashedPassword=await bcrypt.hash(password,salt);
     console.log('Hashed Password:', hashedPassword); 
     const user = await User.create({ username, email, password:hashedPassword });
-    // await user.save();
+    await user.save();
     console.log("Registered User:",user);
     
     res.status(201).json({
@@ -75,5 +76,31 @@ exports.loginUser = async (req, res) => {
   }
 };
 
+exports.fetchCart=async(req,res)=>{
+  const {userId}=req.query
+  try{
+      const cart=await Cart.findOne({userId})
+      if(cart){
+          res.json(cart)
+      }else{
+          res.json({userId,cartItems:[]})
+      }
+  }
+  catch(e){
+      res.status(500).send({e:"Error fetching cart data."})
+  }
+}
 
-
+exports.createCart=async(req,res)=>{
+  const {userId,cartItems}=req.body
+  try{
+      const cart=await Cart.findOneAndUpdate(
+          {userId},
+          {userId,cartItems},
+          {new:true,upsert:true}
+      )
+  }
+  catch(e){
+      res.status(500).send({e:"Error updating cart item"})
+  }
+}

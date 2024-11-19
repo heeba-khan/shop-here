@@ -1,12 +1,15 @@
 const express = require('express');
-const { registerUser, loginUser } = require('../controllers/authentication');
+const { registerUser, loginUser,fetchCart,createCart } = require('../controllers/authentication');
 
 const router = express.Router();
 
-// Register user
+
 router.post('/register', registerUser);
 
-// Login user
 router.post('/login', loginUser);
+
+router.post('/add-cart',createCart);
+
+router.get('/get-cart',fetchCart)
 
 module.exports = router;

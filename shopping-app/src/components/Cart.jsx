@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useCart } from '../CartContext'; 
 import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
-  const { cart } = useCart();
+  const { cart,loading,fetchCart } = useCart();
   const navigate=useNavigate();
 
+  useEffect(()=>{
+    fetchCart()
+  },[])
+
+  if(loading){
+    return <div>Loading...</div>
+  }
   if (!Array.isArray(cart)) {
     console.error('cart is not an array:', cart);
     return <p>There was an error loading your cart.</p>;

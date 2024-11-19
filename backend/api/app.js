@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const connectDB = require('../config/db');
 const authRoutes = require('../routes/authroutes');
 
+
 // Load environment variables
 dotenv.config();
 
@@ -13,12 +14,20 @@ connectDB();
 
 const app = express();
 
-// Middleware
+// const allowedOrigins = [
+//     "https://shop-here-frontend.vercel.app", // Deployed frontend
+//     "http://127.0.0.1:5173",                // Local development environment
+//     "http://localhost:5173"                 // Alternate localhost URL
+//   ];
+
+// app.use(cors())
 app.use(cors({
     origin:'https://shop-here-frontend.vercel.app',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
+
+app.options('*', cors());
 // app.use(cors({
 //     origin: ['http://localhost:5173']
 //   }));
@@ -28,6 +37,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api/auth', authRoutes);
+// app.use('/api',cartRoutes)
 
 // app.get('/', (req, res) => {
 //     res.send('Welcome to the Shopping Cart API');
@@ -42,13 +52,13 @@ app.get('/',(req,res)=>{
     }
 })
 
-app.get('/api',(req,res)=>{
-    try{
-        res.send("/api route is working fine.")
-    }catch(e){
-        res.status(500).send({e:"Could not reach /api endpoint."})
-    }
-})
+// app.get('/api',(req,res)=>{
+//     try{
+//         res.send("/api route is working fine.")
+//     }catch(e){
+//         res.status(500).send({e:"Could not reach /api endpoint."})
+//     }
+// })
 
 // Port configuration
 const PORT = process.env.PORT || 5000;

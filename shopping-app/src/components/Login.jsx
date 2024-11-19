@@ -1,12 +1,13 @@
-// src/components/Login.jsx
 import React, { useState } from 'react';
 import { useNavigate,Link } from 'react-router-dom';
+import { useCart } from '../CartContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate(); 
+  const {fetchCart}=useCart()
   const apiUrl = import.meta.env.VITE_BACKEND_URL;
   // console.log(apiUrl);
 
@@ -30,10 +31,13 @@ const Login = () => {
         const data = await response.json();
         console.log('Response Data: ',data);
         
-        if (data.token) {
+        if (data.token&&data.userId) {
             console.log('Token recieved: ',data.token);
+            console.log('userId recieved: ',data.userId);
             localStorage.setItem('token', data.token);
+            // setUserId(data.userId)
             // setUser(data); // Set the logged-in user in the app's state
+            await fetchCart()
             console.log('Navigating to home');
             navigate('/');
         } else {
