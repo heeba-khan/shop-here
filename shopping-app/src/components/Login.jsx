@@ -15,24 +15,24 @@ const Login = () => {
     e.preventDefault();
 
     try {
+      
       const response = await fetch(`${apiUrl}/api/auth/login`, {
         method: 'POST',
-        // headers: { 'Content-Type': 'application/json' },
         headers: {
           "Content-Type": "application/json",
-          
         },
         body: JSON.stringify({ email, password }),
       });
 
+      
     if(response.ok){
         const data = await response.json();
         console.log('Response Data: ',data);
         
-        if (data.token&&data.userId) {
+        if (data.token) {
             console.log('Token recieved: ',data.token);
-            console.log('userId recieved: ',data.userId);
             localStorage.setItem('token', data.token);
+            console.log('Token saved in localStorage:', localStorage.getItem('token'));
             // setUserId(data.userId)
             // setUser(data); // Set the logged-in user in the app's state
             await fetchCart()
